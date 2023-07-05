@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    transition: all 0.1s ease-in-out;
+    outline: none !important;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #41638B;
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+}
+
+.bg-black-active {
+    background-color: #132B47 !important;
+}
+
+.bg-black-active:hover {
+    filter: brightness(1.5) !important;
+}
+
+.highlighter {
+    background-color: #132B47 !important;
+    border: solid 4px #41638B !important;
+    max-height: 50vh;
+}
