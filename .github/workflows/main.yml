@@ -29,3 +29,16 @@ jobs:
         with:
           branch: gh-pages
           folder: build
+
+      - name: Add Permissions-Policy header
+        run: |
+          echo "<meta http-equiv='Permissions-Policy' content='interest-cohort=()'>" >> build/index.html
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add build/index.html
+          git commit -m "Disable interest-cohort feature"
+          git push
+
