@@ -1,0 +1,238 @@
+
+/* Tooltip */
+[data-toolTip]{
+    position: relative;
+}
+
+[data-toolTip]::before, [data-toolTip]::after{
+    transition: top 0.2s ease-out, opacity 0.1s ease-out;
+    content: "";
+    opacity: 0;
+    position: absolute;
+    left: 50%;
+    width: min-content;
+    top: 50%;
+}
+
+[data-toolTip]:hover::before, [data-toolTip]:hover::after{
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+[data-toolTip]:hover::before {
+    content: attr(data-toolTip);
+    padding: 5px;
+    width: max-content;
+    background-color: rgb(79, 100, 130);
+    color: white;
+    border-radius: 5px;
+    top: -40px;
+
+}
+
+[data-toolTip]:hover::after {
+    content: "";
+    border-width: 10px;
+    border-style: solid;
+    border-color: rgb(79, 100, 130) transparent transparent transparent;
+    rotate: 180;
+    top: -15px;
+}
+
+/* Button click */
+button{
+    scale: 1;
+}
+
+button:active{
+    scale: 0.93;
+}
+
+/* Button hover brightness */
+button{
+    transition: filter 0.1s ease-in-out;
+    filter: brightness(1);
+}
+
+button:hover{
+    filter: brightness(1.2);
+}
+
+/* Dropdown */
+.dropdown{
+    border: solid 1px gray;
+    width: fit-content;
+    min-width: 100px;
+}
+.dropdown button{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: none;
+}
+
+.dropdown button svg{
+    transition: rotate 0.1s ease-in-out;
+    rotate: 0deg;
+}
+
+.dropdown.active svg{
+    rotate: 180deg;
+}
+
+.dropdown .item-container {
+    overflow: hidden;
+    transition: height 0.5s ease-in-out;
+}
+
+.dropdown.active .item-container {
+    height: auto;
+}
+
+.dropdown li{
+    background-color: white;
+    list-style-type: none;
+    border-top: solid 1px gray;
+    padding-block: 5px;
+    padding-inline: 5px;
+    cursor: pointer;
+}
+
+.dropdown li:hover{
+    filter: brightness(0.95);
+}
+
+/* Checkbox */
+.checkbox{
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border: 2px solid gray;
+    border-radius: 2px;
+    outline: none;
+}
+
+.checkbox:hover{
+    filter: brightness(1.2);
+    cursor: pointer;
+}
+
+.checkbox::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    background-color: red;
+    border-radius: 0px;
+    vertical-align: middle;
+    transition: background-color 0.1s ease-in-out;
+  }
+
+.checkbox:checked::before {
+    background-color: green;
+}
+
+.checkbox::after {
+    content: "\00d7";
+    color: white;
+    position: absolute;
+    top: -17%;
+    left: 15%;
+    font-size: 20px;
+}
+
+.checkbox:checked::after {
+    content: "✔";
+    color: white;
+    position: absolute;
+    top: -10%;
+    left: 20%;
+    font-size: 14px;
+}
+
+/* Notification */
+#notification-container{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 5px;
+    width: 22%;
+    min-width: 200px;
+}
+
+.notification{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+
+    background-color: white;
+    padding: 8px 25px;
+    margin-bottom: 5px;
+    border-radius: 50px;
+    /* border: solid 3px; */
+    position: relative;
+    transform: translateX(120%);
+    transition: transform 0.3s ease-in-out;
+    color: gray;
+}
+
+.notification .title{
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.notification .text{
+    margin: 0;
+}
+
+.notification.active{
+    transform: translateX(0%);
+}
+
+.notification::after{
+    content: '\00d7';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+}
+
+.notification:hover{
+    filter: brightness(0.95);
+    cursor: pointer;
+}
+
+.notification.border-info{
+    border-color: gray;
+}
+.notification.border-error{
+    border-color: red;
+}
+.notification.border-warning{
+    border-color: orange;
+}
+.notification.border-success{
+    border-color: rgb(37, 202, 128);
+}
+.notification.border-success svg, .notification.border-success .title{
+    color: rgb(37, 202, 128);
+}   
+
+.notification.border-info svg, .notification.border-info .title {
+    color: gray;
+}
+
+.notification.border-error svg, .notification.border-error .title {
+    color: red;
+}
+
+.notification.border-warning svg, .notification.border-warning .title {
+    color: orange;
+}
